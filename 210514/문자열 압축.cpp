@@ -1,4 +1,4 @@
-/*#include <string>
+#include <string>
 #include <vector>
 #include <queue>
 #include <algorithm>
@@ -54,21 +54,4 @@ int solution(string s) {
 		result.clear();
 	}
 	return answer;
-}*/
-#include <string>
-#include <iostream>
-#include <algorithm>
-using namespace std;
-string arr = "ACFJMNRT";
-int solution(int n, vector<string> data) {
-	int answer = 0;
-	do {
-		cout << arr.c_str() << endl;
-	} while (next_permutation(arr.begin(), arr.end()));
-	return answer;
-}
-void main()
-{
-	solution(2, { "N~F=0", "R~T>2" });
-	solution(2, { "M~C<2", "C~M>1" });
 }
