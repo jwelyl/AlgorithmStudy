@@ -1,6 +1,6 @@
 #include <vector>
 #include <algorithm>
-#include <iostream>
+
 using namespace std;
 const int INF=9876;
 vector<int> adj[201];
