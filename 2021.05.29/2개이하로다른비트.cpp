@@ -10,7 +10,7 @@ vector<long long> solution(vector<long long> numbers) {
         long long num = numbers[i];
         if(num % 2 == 0) answer.push_back(num + 1);
         else {
-            long long zeroBit = (num + 1) & (-num);
+            long long zeroBit = (num + 1) & (~num);
             long long result = (num | zeroBit) & (~(zeroBit >> 1));
             answer.push_back(result);
         }
