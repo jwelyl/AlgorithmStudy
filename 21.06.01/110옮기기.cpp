@@ -13,7 +13,7 @@ vector<string> solution(vector<string> s) {
             if(tmp.size() >= 3) {
                 if(tmp.substr(tmp.size() - 3, 3) == "110"){
                     count++;
-                    tmp.erase(tmp.size() -3, tmp.size());
+                    tmp.erase(tmp.size() -3, 3);
                 }
             }
         }
