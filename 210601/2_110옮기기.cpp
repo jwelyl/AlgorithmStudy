@@ -43,22 +43,19 @@ string func(string& str) {
     if (nStr.find("111") != -1) {
         int pos = nStr.find("111");
         return nStr.substr(0, pos) + str110 + nStr.substr(pos);
+    } else if (nStr.find("0") != -1) {
+        int pos = nStr.rfind("0");
+        return nStr.substr(0, pos + 1) + str110 + nStr.substr(pos + 1);
     } else {
-        if (nStr.find("0") != -1) {
-            int pos = nStr.rfind("0");
-            return nStr.substr(0, pos + 1) + str110 + nStr.substr(pos + 1);
-        } else {
-            return str110 + nStr;
-        }
+        return str110 + nStr;
     }
 }
 
 vector<string> solution(vector<string> s) {
     vector<string> answer;
 
-    for (string& str : s) {
+    for (string& str : s)
         answer.push_back(func(str));
-    }
 
     return answer;
 }
