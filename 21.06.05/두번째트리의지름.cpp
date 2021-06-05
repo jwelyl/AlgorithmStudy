@@ -1,17 +1,14 @@
-#include <iostream>
-#include <vector>
-#include <cstring>
-#define MAX 10001
+#include <bits/stdc++.h>
 using namespace std;
 
 int n;
-vector<pair<int, int>> graph[MAX];
-vector<int> tree[MAX];
-bool visited[MAX];
-int dist[MAX];
+vector<pair<int, int>> graph[100001];
+vector<int> tree[100001];
+bool visited[100001];
+int dist[100001];
+int A, B, C, D;
+int ret;
 void input() {
-    memset(visited, false, sizeof(visited));
-
     cin >> n;
     for(int i = 0; i < n - 1; i++) {
         int u, v, w; cin >> u >> v >> w;
@@ -33,18 +30,29 @@ void dfs(int idx) {
 
 void pro() {
     dfs(1);
-    int value = 0;
     for(int i = 1; i <= n; i++)
-        if(dist[i] > dist[value]) value = i;
+        if(dist[i] > dist[A]) A = i; // 가장 먼 A노드
 
-    fill(visited, visited + MAX, 0);
-    fill(dist, dist + MAX, 0);
-
-    dfs(value);
-    for(int i = 1; i <= n; i++)
-        if(dist[i] > dist[value]) value = i;
+    memset(visited, 0, sizeof(visited));
+    memset(dist, 0, sizeof(dist));
+    dfs(A);
+    for(int i = 1; i <= n; i++) {
+        if(dist[i] > dist[B]) B = i; // 가장 먼 B노드
+    }
+    for(int i = 1; i <= n; i++) {
+        if(i == B) continue;
+        if(dist[i] > dist[C]) C = i;
+    }
+    ret = dist[C];
+    memset(visited, 0, sizeof(visited));
+    memset(dist, 0, sizeof(dist));
+    dfs(B);
+    for(int i = 1; i <= n; i++) {
+        if(i == A) continue;
+        if(dist[i] > dist[D]) D = i;
+    }
     
-    cout << dist[value];
+    cout << max(ret, dist[D]);
 }
 
 int main() {
