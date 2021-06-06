@@ -9,6 +9,7 @@ vector<pair<int, int>> graph[MAX];
 vector<int> tree[MAX];
 bool visited[MAX];
 int dist[MAX];
+int A, B, C, D;
 void input() {
     memset(visited, false, sizeof(visited));
 
@@ -33,18 +34,30 @@ void dfs(int idx) {
 
 void pro() {
     dfs(1);
-    int value = 0;
-    for(int i = 1; i <= n; i++)
-        if(dist[i] > dist[value]) value = i;
+    for(int i = 1; i <= n; i++) {
+        if(dist[i] > dist[A]) A = i;
+    }
+
+    for(int i = 1; i <= n; i++) {
+        if(i == A) continue;
+        else if(dist[i] > dist[C]) C = i;
+    }
 
     fill(visited, visited + MAX, 0);
     fill(dist, dist + MAX, 0);
+    dfs(A);
+    for(int i = 1; i <= n; i++) {
+        if(dist[i] > dist[B]) B = i;
+    }
+    int ret = dist[B];
 
-    dfs(value);
+    fill(visited, visited + MAX, 0);
+    fill(dist, dist + MAX, 0);
+    dfs(C);
     for(int i = 1; i <= n; i++)
-        if(dist[i] > dist[value]) value = i;
-    
-    cout << dist[value];
+        if(dist[i] > dist[D]) D = i;
+
+    cout << min(dist[D], ret);
 }
 
 int main() {
