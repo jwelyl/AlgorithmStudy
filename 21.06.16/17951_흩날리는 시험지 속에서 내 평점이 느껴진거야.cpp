@@ -18,11 +18,11 @@ void input() {
 }
 
 void pro() {
-    long long left = 0; long long right  = sum;
+    int left = 0; int right  = sum;
 
     while(left <= right) {
         int cnt = 0, now = 0;
-        long long mid = (left + right) / 2;
+        int mid = (left + right) / 2;
 
         // 점수의 크기로 그룹으로 나누기
         for(int i = 0; i < N; i++) {
