@@ -54,11 +54,9 @@ int main(void){
   }
   sort(y.begin(),y.end()); 
   sort(x.begin(),x.end());
-  y.erase(unique(y.begin(),y.end()),y.end());
-  x.erase(unique(x.begin(),x.end()),x.end());
   sort(node.begin(),node.end());
-  for(auto n : y)Y[n]=sy++;
-  for(auto n : x)X[n]=sx++;
+  for(auto n : y)if(Y[n]==0)Y[n]=sy++;
+  for(auto n : x)if(X[n]==0)X[n]=sx++;
   for(auto n : node) axidY[Y[n.y]].push_back(n);
   for(int i=0; i<sy; i++)
     for(auto n : axidY[i]){
